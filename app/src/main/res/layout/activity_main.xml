@@ -57,6 +57,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/show_book"
                 android:textSize="18sp"
+                android:onClick="btn2Click"
                 android:backgroundTint="@color/btnColor"/>
         </LinearLayout>
 

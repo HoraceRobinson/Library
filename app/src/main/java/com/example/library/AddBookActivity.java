@@ -44,19 +44,16 @@ public class AddBookActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_book);
         Button queryBtn = findViewById(R.id.btn3);
-        queryBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                isbn = findViewById(R.id.isbn);
-                LinearLayout li = findViewById(R.id.linear1);
-                li.setVisibility(View.VISIBLE);
-                Button button = findViewById(R.id.btn4);
-                button.setEnabled(true);
-                new Thread(() -> {
-                    System.out.println("New Thread");
-                    getBookInfo(isbn);
-                }).start();
-            }
+        queryBtn.setOnClickListener(view -> {
+            isbn = findViewById(R.id.isbn);
+            LinearLayout li = findViewById(R.id.linear1);
+            li.setVisibility(View.VISIBLE);
+            Button button = findViewById(R.id.btn4);
+            button.setEnabled(true);
+            new Thread(() -> {
+                System.out.println("New Thread");
+                getBookInfo(isbn);
+            }).start();
         });
     }
 

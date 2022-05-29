@@ -15,13 +15,13 @@
         android:gravity="center"
         tools:ignore="MissingConstraints">
         <EditText
-            android:id="@+id/isbn"
+            android:id="@+id/search_text"
             android:layout_weight="4"
             android:layout_height="58dp"
             android:drawableStart="@drawable/search"
             android:drawablePadding="15dp"
             android:hint="@string/search_hint"
-            android:inputType="number"
+            android:inputType="text"
             tools:ignore="MissingConstraints"
             android:layout_width="0dp">
         </EditText>
@@ -100,5 +100,11 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/num_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/border"
+        android:textSize="12sp"/>
 </LinearLayout>

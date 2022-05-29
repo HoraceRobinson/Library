@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Iterator;
 
 public class AddBookActivity extends AppCompatActivity {
     private EditText isbn;
@@ -49,6 +50,8 @@ public class AddBookActivity extends AppCompatActivity {
                 isbn = findViewById(R.id.isbn);
                 LinearLayout li = findViewById(R.id.linear1);
                 li.setVisibility(View.VISIBLE);
+                Button button = findViewById(R.id.btn4);
+                button.setEnabled(true);
                 new Thread(() -> {
                     System.out.println("New Thread");
                     getBookInfo(isbn);
@@ -112,6 +115,7 @@ public class AddBookActivity extends AppCompatActivity {
                 System.out.println("请求成功");
                 LinearLayout li = findViewById(R.id.linear1);
                 li.setVisibility(View.VISIBLE);
+
                 TextView book_name = findViewById(R.id.book_name);
                 TextView author_name = findViewById(R.id.author);
                 TextView publisher_name = findViewById(R.id.publisher);
@@ -153,15 +157,37 @@ public class AddBookActivity extends AppCompatActivity {
 
 
     public void btn4Click(View view) throws JSONException {
-        JSONObject book = new JSONObject();
-        book.put("isbn", isbn.getText().toString());
-        book.put("name", bookName);
-        book.put("author", author);
-        book.put("publisher", publisher);
-        book.put("page_num", pageNum);
-        book.put("date", date);
-        book.put("price", price);
-        book.put("category", category);
-        System.out.println(book);
+        boolean isAdded = false;
+        if(BookListActivity.bookList != null){
+            for(int i = 0; i < BookListActivity.bookList.length(); i++){
+                try {
+                    if(((String) BookListActivity.bookList.getJSONObject(i).get("isbn")).equals(isbn.getText().toString())){
+                        isAdded = true;
+                        break;
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        if(isAdded){
+            Toast.makeText(AddBookActivity.this, "该书目已存在", Toast.LENGTH_LONG).show();
+        }
+        else{
+            JSONObject book = new JSONObject();
+            book.put("isbn", isbn.getText().toString());
+            book.put("name", bookName);
+            book.put("author", author);
+            book.put("publisher", publisher);
+            book.put("page_num", pageNum);
+            book.put("date", date);
+            book.put("price", price);
+            book.put("category", category);
+            BookListActivity.addBook(book);
+            Toast.makeText(AddBookActivity.this, "图书信息保存成功", Toast.LENGTH_LONG).show();
+            System.out.println(BookListActivity.bookList);
+        }
+        Button button = findViewById(R.id.btn4);
+        button.setEnabled(false);
     }
 }

@@ -3,6 +3,9 @@ package com.example.library;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -10,6 +13,7 @@ import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ThemedSpinnerAdapter;
@@ -23,7 +27,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class AddBookActivity extends AppCompatActivity {
     private EditText isbn;
@@ -55,18 +61,50 @@ public class AddBookActivity extends AppCompatActivity {
                 getBookInfo(isbn);
             }).start();
         });
+
+        ImageButton setting = findViewById(R.id.settings);
+        setting.setOnClickListener(view -> {
+            startActivity(new Intent(this, PreferenceActivity.class));
+        });
     }
 
-//    public void btn3Click(View view) {
-//        isbn = findViewById(R.id.isbn);
-//        LinearLayout li = findViewById(R.id.linear1);
-//        li.setVisibility(View.VISIBLE);
-//        new Thread(() -> {
-//            System.out.println("New Thread");
-//
-//            getBookInfo(isbn);
-//        });
-//    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences sharedPreferences = getSharedPreferences("style", Context.MODE_PRIVATE);
+        boolean showPrice = Boolean.parseBoolean(sharedPreferences.getString("showPrice", "false"));
+        Integer fontSize = Integer.parseInt(sharedPreferences.getString("fontSize", "15"));
+        System.out.println(showPrice);
+        setShowPrice(showPrice);
+        setFontSize(fontSize);
+    }
+
+    private void setFontSize(Integer fontSize) {
+        List<TextView> list = new ArrayList<>();
+        list.add(findViewById(R.id.book_name_title));
+        list.add(findViewById(R.id.book_name));
+        list.add(findViewById(R.id.author_title));
+        list.add(findViewById(R.id.author));
+        list.add(findViewById(R.id.publisher_title));
+        list.add(findViewById(R.id.publisher));
+        list.add(findViewById(R.id.page_num_title));
+        list.add(findViewById(R.id.page_num));
+        list.add(findViewById(R.id.date_title));
+        list.add(findViewById(R.id.date));
+        list.add(findViewById(R.id.price_title));
+        list.add(findViewById(R.id.price));
+        list.add(findViewById(R.id.category_title));
+        list.add(findViewById(R.id.category));
+        for(int i = 0; i < list.size(); i++){
+            list.get(i).setTextSize(fontSize);
+        }
+    }
+
+    private void setShowPrice(boolean showPrice) {
+        LinearLayout price = findViewById(R.id.price_layout);
+        price.setVisibility(showPrice ? View.VISIBLE : View.GONE);
+    }
+
 
     public void getBookInfo(EditText isbn){
         HttpURLConnection connection;

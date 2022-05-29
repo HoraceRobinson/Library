@@ -26,4 +26,7 @@
     <string name="search_hint">输入作者名以查询</string>
     <string name="sort_by_author">按作者名排序</string>
     <string name="sort_by_date">按出版日期排序</string>
+    <string name="show_price">显示价格</string>
+    <string name="text_size">字号</string>
+    <string name="save_setting">保存设置</string>
 </resources>

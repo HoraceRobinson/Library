@@ -4,10 +4,101 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BookListActivity">
+    tools:context=".BookListActivity"
+    android:orientation="vertical"
+    android:layout_alignParentBottom="true"
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginVertical="6dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        tools:ignore="MissingConstraints">
+        <EditText
+            android:id="@+id/isbn"
+            android:layout_weight="4"
+            android:layout_height="58dp"
+            android:drawableStart="@drawable/search"
+            android:drawablePadding="15dp"
+            android:hint="@string/search_hint"
+            android:inputType="number"
+            tools:ignore="MissingConstraints"
+            android:layout_width="0dp">
+        </EditText>
+
+        <Button
+            android:id="@+id/btn5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/search"
+            tools:ignore="MissingConstraints">
+        </Button>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <TextView
+            android:text="@string/book_name1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:background="@drawable/line_h"
+            />
+        <TextView
+            android:text="@string/author1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:background="@drawable/line_h"/>
+        <TextView
+            android:text="@string/publisher1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:background="@drawable/line_h"/>
+        <TextView
+            android:text="@string/page_num1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:background="@drawable/line_h"/>
+        <TextView
+            android:text="@string/time1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:background="@drawable/line_h"/>
+        <TextView
+            android:text="@string/price1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:background="@drawable/line_h"/>
+        <TextView
+            android:text="@string/category1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:background="@drawable/line_h"/>
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-
 </LinearLayout>

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
@@ -31,7 +32,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         try {
-            holder.textView.setText((String)bookList.getJSONObject(position).get("isbn"));
+            JSONObject jsonObject = bookList.getJSONObject(position);
+            holder.bookName.setText((String)jsonObject.get("name"));
+            holder.author.setText((String)jsonObject.get("author"));
+            holder.publisher.setText((String)jsonObject.get("publisher"));
+            holder.pageNum.setText((String)jsonObject.get("page_num"));
+            holder.date.setText((String)jsonObject.get("date"));
+            holder.price.setText((String)jsonObject.get("price"));
+            holder.category.setText((String)jsonObject.get("category"));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -43,10 +51,23 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        private TextView textView;
+        private TextView bookName;
+        private TextView author;
+        private TextView publisher;
+        private TextView pageNum;
+        private TextView date;
+        private TextView price;
+        private TextView category;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.book);
+            bookName = itemView.findViewById(R.id.book_name);
+            author = itemView.findViewById(R.id.author_name);
+            publisher = itemView.findViewById(R.id.publisher_name);
+            pageNum = itemView.findViewById(R.id.page_number);
+            date = itemView.findViewById(R.id.published_time);
+            price = itemView.findViewById(R.id.price_num);
+            category = itemView.findViewById(R.id.category_name);
         }
     }
 }

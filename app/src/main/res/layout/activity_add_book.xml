@@ -30,20 +30,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/search"
-            android:onClick="btn3Click"
             tools:ignore="MissingConstraints">
         </Button>
     </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/search_result"
-        android:paddingStart="10dp"
-        android:layout_marginTop="10dp"
-        android:textSize="20sp">
-
-    </TextView>
 
     <LinearLayout
         android:id="@+id/linear1"
@@ -51,7 +40,15 @@
         android:layout_height="match_parent"
         android:layout_marginTop="10dp"
         android:orientation="vertical"
-        android:visibility="invisible">
+        android:visibility="visible">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/search_result"
+            android:paddingStart="10dp"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp">
+        </TextView>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -64,6 +61,7 @@
                 android:text="@string/book_name">
             </TextView>
             <TextView
+                android:id="@+id/book_name"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3">
@@ -81,6 +79,7 @@
                 android:text="@string/author">
             </TextView>
             <TextView
+                android:id="@+id/author"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3">
@@ -98,6 +97,7 @@
                 android:text="@string/publisher">
             </TextView>
             <TextView
+                android:id="@+id/publisher"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3">
@@ -114,11 +114,12 @@
                 android:layout_weight="1"
                 android:text="@string/page_num">
             </TextView>
+
             <TextView
+                android:id="@+id/page_num"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="3">
-            </TextView>
+                android:layout_weight="3" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -132,6 +133,7 @@
                 android:text="@string/time">
             </TextView>
             <TextView
+                android:id="@+id/date"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3">
@@ -149,6 +151,7 @@
                 android:text="@string/price">
             </TextView>
             <TextView
+                android:id="@+id/price"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3">
@@ -166,28 +169,37 @@
                 android:text="@string/category">
             </TextView>
             <TextView
+                android:id="@+id/category"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3">
             </TextView>
         </LinearLayout>
-        <LinearLayout
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:padding="10dp">-->
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="1"-->
+<!--                android:text="@string/cover">-->
+<!--            </TextView>-->
+<!--            <TextView-->
+<!--                android:id="@+id/cover"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="3">-->
+<!--            </TextView>-->
+<!--        </LinearLayout>-->
+        <Button
+            android:id="@+id/btn4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="10dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/cover">
-            </TextView>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="3">
-            </TextView>
-        </LinearLayout>
+            android:text="@string/save_book"
+            android:layout_marginHorizontal="10dp"
+            android:onClick="btn4Click"/>
 
     </LinearLayout>
 

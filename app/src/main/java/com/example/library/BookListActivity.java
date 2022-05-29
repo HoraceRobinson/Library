@@ -6,7 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import org.json.JSONObject;
+
 public class BookListActivity extends AppCompatActivity {
+
+    public static JSONObject[] bookList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

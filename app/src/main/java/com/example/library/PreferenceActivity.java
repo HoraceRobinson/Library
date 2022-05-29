@@ -23,12 +23,14 @@ public class PreferenceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preference);
         SwitchCompat switchCompat = findViewById(R.id.show_price);
+
         switchCompat.setOnCheckedChangeListener((buttonView, isChecked) -> {
             showPrice = isChecked;
         });
         SharedPreferences shared = getSharedPreferences("style", Context.MODE_PRIVATE);
-//        showPrice = shared.getBoolean("showPrice", false);
+        showPrice = Boolean.parseBoolean(shared.getString("showPrice", "false"));
         fontSize = Integer.parseInt(shared.getString("fontSize", "15"));
+        switchCompat.setChecked(showPrice);
         EditText editText = findViewById(R.id.font_size);
         editText.setHint(fontSize.toString());
         Button save = findViewById(R.id.save_change);

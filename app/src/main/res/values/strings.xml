@@ -24,4 +24,6 @@
     <string name="price1">定价</string>
     <string name="category1">丛书</string>
     <string name="search_hint">输入作者名以查询</string>
+    <string name="sort_by_author">按作者名排序</string>
+    <string name="sort_by_date">按出版日期排序</string>
 </resources>
